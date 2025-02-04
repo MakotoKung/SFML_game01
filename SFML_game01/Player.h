@@ -7,9 +7,10 @@
 #include <Vector>
 
 class Player : public Entity {
-	
+	private: 
+		sf::IntRect allowedArea;
 	public:
-		Player(const sf::Vector2i& startPos) {
+		Player(const sf::Vector2i& startPos,const sf::IntRect& area) :allowedArea(area) {
 			SetPosition(startPos);
 		}
 		void Movement();

@@ -19,8 +19,7 @@ void Entity::SetPosition(const sf::Vector2i& Pos) {
 }
 bool Entity::Game_Over() {
 	sf::Vector2i Window_AREA = { 1280,720 };
-	if ( (Position.x >= Window_AREA.x ) || ( Position.y >= Window_AREA.y ) || 
-		(Position.x <= 0 ) || (Position.y <= 0) ) 
+	if ( (Position.x >= Window_AREA.x ) || ( Position.y >= Window_AREA.y ))
 	{
 		return 0;
 	}

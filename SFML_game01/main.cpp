@@ -7,16 +7,13 @@
 using namespace std;
 
 //Define variable
-const int TILE = 64;
-const int Map_HEIGHT = 12;
-const int Map_WIDTH = 20;
 const int width = 1280;
 const int height = 720;
-//int Map[Map_HEIGHT][Map_WIDTH]; //12 *20
+
 
 int main()
 {
-    Player player({500,100}); //Contructor = Position in Entity_Class x,y
+    Player player({5,520},sf::IntRect(0,320,1220,250)); //Contructor = Position in Entity_Class x,y
     Entity Monster;
     
     //Setting 
@@ -65,9 +62,8 @@ int main()
      //Complete//   - Find How to show Player object  
      //Complete//   - add movement in class Player then can move in area window
      //Complete//   - add Game_Over when movement 
-     //Wait to Make //   - Prepare space Map for Player stage
-
-*/
+     //Complete//   - Prepare space Map for Player stage 0-1200 x; y =320-520;  
+*/ 
 
 /*-----------------------------------------------------------------------------
     03/02/2568 (0.02)
@@ -80,7 +76,4 @@ int main()
                         -Type of monster 
                         -Theame game 
         
-
-
-
 */
