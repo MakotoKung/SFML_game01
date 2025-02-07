@@ -10,8 +10,13 @@ class Player : public Entity {
 	private: 
 		sf::IntRect allowedArea;
 	public:
-		Player(const sf::Vector2i& startPos,const sf::IntRect& area) :allowedArea(area) {
+		Player(const sf::Vector2i& startPos,const sf::IntRect& area,int,const sf::Vector2i& Size) :allowedArea(area) {
+			
 			SetPosition(startPos);
+
+		}
+		~Player() {
+			std::cout << "\nObject delete";
 		}
 		void Movement();
 
