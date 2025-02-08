@@ -22,6 +22,7 @@ void Entity::SetPosition(const sf::Vector2i& Pos) {
 	body.setPosition(static_cast<float>(Position.x), static_cast<float>(Position.y));
 
 }
+
 void Entity::setVisible(bool visible) {
 	Visible = visible;
 }

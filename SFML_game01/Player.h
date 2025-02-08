@@ -23,6 +23,7 @@ class Player : public Entity {
 			std::cout << "\nObject delete";
 		}
 		void Movement();
+		float getStamina();
 		
 
 		

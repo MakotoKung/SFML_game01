@@ -15,32 +15,33 @@ int main()
 {
     Player player(0.8f,100.00f,{5,520},sf::IntRect(0,320,1220,250),3,{64,128}); //Contructor = Position in Entity_Class x,y
     Entity Monster;
-    Entity Background;
+    Entity Background,barSta,sta;
     
     Background.LoadTexture("Image/Background.png");
+    //----StaminaBar--------//
+    barSta.body.setFillColor(sf::Color::Transparent);
+    barSta.body.setOutlineColor(sf::Color::Black);
+    barSta.body.setOutlineThickness(3.00f);
+    barSta.body.setSize({ 350,40 });
+    barSta.SetPosition({ 20,80 });
+    //------Inside StaminaBar--------//
+    sta.body.setFillColor(sf::Color::Yellow);
+    sta.body.setSize({ 350 ,40 }); //stamina *3.5f;
+    sta.SetPosition({ 20,80 });
+    
    
     
-    //Setting 
+    //Player Setting 
     player.body.setFillColor(sf::Color::Transparent);
     player.body.setOutlineThickness(5.0f);
     player.body.setOutlineColor(sf::Color::Blue);
     player.body.setSize({60,124}); //default = {64,128}
     player.LoadTexture("Image/Player.png");
     
-    
-    
-    //Backgournd 
-    /*CLOUD.LoadTexture("SFML_game01\Image\2.png");
-    HILL.LoadTexture("SFML_game01\Image\3.png");
-    FIELD.LoadTexture("SFML_game01\Imgae\4.png");*/
-
     sf::Clock clock;
     sf::RenderWindow window(sf::VideoMode(width, height), "First Game");
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(90);
 
-    //Position_Onwindow  = Map_height = height - (TILE*Map_HEIGHT) ;
-    //Map_width  = (TILE *Map_WIDTH);
-    
     while (window.isOpen())
     {
         
@@ -55,14 +56,20 @@ int main()
             
         }
         float deltatime = clock.restart().asSeconds();
+        float stamina = player.getStamina();
         
+        //----------Obj function-----------//
         player.Movement();
         player.getPosition();
+        sta.body.setSize({ stamina *3.5f ,40 });
         
-        
+        //-------------Draw--------------------//
         window.clear(sf::Color::White);
         Background.Render(window);
+        barSta.Render(window);
+        sta.Render(window);
         player.Render(window);
+
         window.display();
         
         
@@ -91,10 +98,10 @@ int main()
     Next to do-list 
      //Design//    -What player can do in the game
      //Complete//  -Image Background, player 
-                   -Find how to add animation 
-                   -Random monster 
-                        -Type of monster 
-                        -Theame game 
+     //Get Idea//  -Find how to add animation  // Loop load new image by frame//
+     //Get Idea//  -Random monster 
+     //Get Idea//   -Type of monster //Easy meduim Hard//
+                    -Theame game  // Hardcore Game //
         
 */
 
@@ -103,7 +110,20 @@ int main()
     Fix bug reset image frame by frame
     Next to do-list 
 
-                    -add Backgournd in gameplay and player
+     //Complete//   -add Backgournd in gameplay and player
+
+*/
+/*---------------------------------------------------------------------------------
+    09/02/2568 (3.48)
+    Add Stamina Bar and sprint button in player_class 
+    Next to do-list 
+
+                    -Make HP_Bar
+                    -Random system 
+                    -score & Point 
+                    -Main menu 
+                    -Monster
+                    -Hitbox (collision)
 
 
 
