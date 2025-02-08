@@ -44,6 +44,7 @@ void Entity::Render(sf::RenderWindow& window) {
 		window.draw(body);
 		
 		
+		
 	
 
 }
