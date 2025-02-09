@@ -13,38 +13,47 @@ const int height = 720;
 
 int main()
 {
-    Player player(0.8f,100.00f,{5,520},sf::IntRect(0,320,1220,250),3,{64,128}); //Contructor = Position in Entity_Class x,y
+    Player player(0.8f, 100.00f, { 5,520 }, sf::IntRect(0, 320, 1220, 250), 3, { 64,128 }); //Contructor = Position in Entity_Class x,y
     Entity Monster;
-    Entity Background,barSta,sta;
-    
+    Entity Background, barSta, sta, Heart[3];
+
     Background.LoadTexture("Image/Background.png");
     //----StaminaBar--------//
     barSta.body.setFillColor(sf::Color::Transparent);
     barSta.body.setOutlineColor(sf::Color::Black);
     barSta.body.setOutlineThickness(3.00f);
     barSta.body.setSize({ 350,40 });
-    barSta.SetPosition({ 20,80 });
+    barSta.SetPosition({ 20,120 });
     //------Inside StaminaBar--------//
     sta.body.setFillColor(sf::Color::Yellow);
     sta.body.setSize({ 350 ,40 }); //stamina *3.5f;
-    sta.SetPosition({ 20,80 });
-    
-   
-    
+    sta.SetPosition({ 20,120 });
+
+    //-------Hp----------------//
+    for (int i = 0;i < 3;i++) {
+        Heart[i].LoadTexture("C:/Users/Shifuro/Downloads/Heart100.png");
+    }
+    Heart[0].SetPosition({ 10,10 });
+    Heart[1].SetPosition({ 110,10 });
+    Heart[2].SetPosition({ 210,10 });
+
+
     //Player Setting 
     player.body.setFillColor(sf::Color::Transparent);
-    player.body.setOutlineThickness(5.0f);
-    player.body.setOutlineColor(sf::Color::Blue);
-    player.body.setSize({60,124}); //default = {64,128}
+    //------collision------//
+    //player.body.setOutlineThickness(5.0f);
+    //player.body.setOutlineColor(sf::Color::Blue);
+    player.body.setSize({ 60,124 }); //default = {64,128}
     player.LoadTexture("Image/Player.png");
-    
+    player.Hp = 3;
+
     sf::Clock clock;
     sf::RenderWindow window(sf::VideoMode(width, height), "First Game");
     window.setFramerateLimit(90);
 
     while (window.isOpen())
     {
-        
+
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -53,30 +62,36 @@ int main()
             if (player.Game_Over() == 0) {
                 window.close();
             }
-            
+
         }
         float deltatime = clock.restart().asSeconds();
         float stamina = player.getStamina();
-        
+
         //----------Obj function-----------//
         player.Movement();
         player.getPosition();
-        sta.body.setSize({ stamina *3.5f ,40 });
-        
+        sta.body.setSize({ stamina * 3.5f ,40 });
+
         //-------------Draw--------------------//
         window.clear(sf::Color::White);
         Background.Render(window);
         barSta.Render(window);
         sta.Render(window);
-        player.Render(window);
+        cout << "\nHP : " << player.Hp;
+        if (player.Hp != 0) {
+            for (int i = 0;i < player.Hp;i++) {
+                Heart[i].Render(window);
 
-        window.display();
-        
-        
-        
-        
+            }
+
+            //Hp.Render(window);
+            player.Render(window);
+
+            window.display();
+
+        }
     }
- 
+
 
     return 0;
 }
@@ -118,7 +133,7 @@ int main()
     Add Stamina Bar and sprint button in player_class 
     Next to do-list 
 
-                    -Make HP_Bar
+    //Complte//     -Make HP_Bar
                     -Random system 
                     -score & Point 
                     -Main menu 

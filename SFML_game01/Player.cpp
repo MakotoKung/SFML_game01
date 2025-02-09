@@ -6,7 +6,7 @@
 void Player::Movement() {
 	sf::Vector2i move({ 0,0 });
 	float Hold = 0.05;
-	float Accel = acc;
+	
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) && (stamina >= 1)) { 
 		acc = 1.5f; 
 		stamina -= 2.00f;
@@ -26,9 +26,12 @@ void Player::Movement() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && Position.x < allowedArea.left + allowedArea.width - 1) {
 		move.x += 4 * acc ;
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) { 
+		Hp -= 1 ; 
+	}
 	SetPosition(Position + move);
-	std::cout << "\nStamina : " << stamina;
-	std::cout <<"\nacc: " << acc;
+	//std::cout << "\nStamina : " << stamina;
+	//std::cout <<"\nacc: " << acc;
 	//std::cout << Position.x << " " << Position.y;
 
 }

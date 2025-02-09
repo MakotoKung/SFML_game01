@@ -34,6 +34,9 @@ bool Entity::Game_Over() {
 	{
 		return 0;
 	}
+	if (Hp <= 0) {
+		return 0;
+	}
 	return 1;
 
 }
