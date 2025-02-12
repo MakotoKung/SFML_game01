@@ -11,6 +11,8 @@ class Player : public Entity {
 		sf::IntRect allowedArea;
 		float acc ;
 		float stamina;
+		float Time;
+		int Score;
 	public:
 		Player(float a,float s,const sf::Vector2i& startPos,const sf::IntRect& area,int,const sf::Vector2i& Size) :allowedArea(area) {
 			
@@ -24,6 +26,10 @@ class Player : public Entity {
 		}
 		void Movement();
 		float getStamina();
+		void setTime(float);
+		float getTime();
+		void setScore(int);
+		int getScore();
 		
 
 		

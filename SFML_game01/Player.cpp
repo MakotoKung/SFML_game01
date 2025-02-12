@@ -37,3 +37,7 @@ void Player::Movement() {
 }
 
 float Player::getStamina() { return stamina; }
+void Player::setTime(float time) { Time = time; }
+float Player::getTime() { return Time; }
+void Player::setScore(int score) { Score += score; }
+int Player::getScore() { return Score; }

@@ -23,10 +23,6 @@ void Entity::SetPosition(const sf::Vector2i& Pos) {
 
 }
 
-void Entity::setVisible(bool visible) {
-	Visible = visible;
-}
-bool Entity::getVisible() { return Visible; }
 
 bool Entity::Game_Over() {
 	sf::Vector2i Window_AREA = { 1280,720 };
@@ -41,20 +37,9 @@ bool Entity::Game_Over() {
 
 }
 
-
 void Entity::Render(sf::RenderWindow& window) {
-
 		window.draw(sprite);
 		window.draw(body);
-		
-		
-		
-	
-
 }
 
-void Entity::Clear(sf::RenderWindow& window) {
-	
-
-}
 
