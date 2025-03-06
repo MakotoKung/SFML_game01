@@ -79,9 +79,11 @@ int main()
     float timeFrame = 0.1f;
     int totalFrame = 6;
     int currentFrame = 0;
+    //float x = 0.00f;
     for (int i = 0;i<3;i++) {
         Wolf[i].setID(1); 
         Wolf[i].Hp = 3;
+        Wolf[i].setSpeed(20.44f);
         //Wolf[i].body.setFillColor(sf::Color::Transparent);
         Wolf[i].set_widthFrame(110);
         Wolf[i].set_heighFrame(130);
@@ -136,6 +138,7 @@ int main()
             player.Render(window);
         }
         //Use time of aniTime for run animation and annoy time game
+        //Animation wolf
         if (aniTime > timeFrame) {
             currentFrame = (currentFrame +1)%totalFrame;
             cout << "Frame :" << currentFrame << endl;
@@ -145,8 +148,26 @@ int main()
         }
         
         
-        Wolf[0].Render(window);
         
+        if (time > 1) {
+            
+            int x = 1400.00f - 100.00f * (time) * 1.00f;
+            
+            if (Wolf[0].getBool() == false) {
+                int y = player.getPosition().y;
+                Wolf[0].SetPosition({ x,y });
+                Wolf[0].setBool(true);
+            }
+            
+            Wolf[0].SetPosition({ x,Wolf[0].getPosition().y});
+                
+            cout << "\n X = " << x << endl;
+
+            if (Wolf[0].getPosition().x >= 0) {
+                 Wolf[0].Render(window);
+             }
+         }
+
         player.setTime(time);
         window.draw(timeText);
         window.draw(scoreText);
@@ -176,7 +197,7 @@ int main()
     Next to do-list 
      //Design//    -What player can do in the game
      //Complete//  -Image Background, player 
-     //Get Idea//  -Find how to add animation  // Loop load new image by frame//
+     //Complete//  -Find how to add animation  // Loop load new image by frame//
      //Complete//  -Random monster 
      //Get Idea//   -Type of monster //Easy meduim Hard//
                     -Theame game  // Hardcore Game //
@@ -200,7 +221,7 @@ int main()
     //Complete//    -Random system 
     //Complete//    -score & time 
                     -Main menu 
-    //Class//       -Monster
+    //Complete//    -Monster Class 
                     -Hitbox (collision)
 
 */
@@ -215,5 +236,21 @@ int main()
                     -fight system monster
                     -item 
                     -Menu Item to use
+
+*/
+
+/*------------------------------------------------------------------------------------------
+    06/03/2568 (21.52)
+        Add animation of Wolf 
+        Add set ID for monster type
+        Next to do list 
+                       
+        //Complete//     -move monster 
+        //After//        -Collision
+        //-------//      -More Wolf in space;
+
+
+
+
 
 */

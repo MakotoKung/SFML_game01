@@ -39,3 +39,11 @@ void Monster::setRect(int x, int y, int width, int heigh) {
 
     sprite.setTextureRect(sf::IntRect(x, y, width, heigh));
 }
+void Monster::setSpeed(float s) { speed = s; }
+float Monster::getSpeed() { return speed; }
+float Monster::calMovement(float position,float acc,float time) {
+    position -= (speed * time) +(acc*time*time);
+    return position;
+}
+void Monster::setBool(bool b) { positionSet = b; }
+bool Monster::getBool() { return positionSet; }

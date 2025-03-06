@@ -12,6 +12,8 @@ class Monster : public Entity {
 		int heighFrame;
 		int widthFrame;
 		sf::IntRect Frame;
+		float speed;
+		bool positionSet = false;
 
 	public:
 		Monster(){}
@@ -22,6 +24,11 @@ class Monster : public Entity {
 		void set_widthFrame(int);
 		int get_widthFrame();
 		void setRect(int, int, int, int);
+		void setSpeed(float);
+		float getSpeed();
+		float calMovement(float,float,float);
+		void setBool(bool b);
+		bool getBool();
 		void Random(int,int);
 
 
