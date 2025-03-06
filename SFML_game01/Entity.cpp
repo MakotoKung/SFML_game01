@@ -35,6 +35,8 @@ bool Entity::Game_Over() {
 	}
 	return 1;
 
+	//if Hitboxmonster == player === dead;
+
 }
 
 void Entity::Render(sf::RenderWindow& window) {

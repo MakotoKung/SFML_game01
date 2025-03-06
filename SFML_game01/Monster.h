@@ -9,11 +9,19 @@
 class Monster : public Entity {
 	private: 
 		int id;
+		int heighFrame;
+		int widthFrame;
+		sf::IntRect Frame;
 
 	public:
 		Monster(){}
 		void setID(int);
 		int getID();
+		void set_heighFrame(int);
+		int get_heighFrame();
+		void set_widthFrame(int);
+		int get_widthFrame();
+		void setRect(int, int, int, int);
 		void Random(int,int);
 
 

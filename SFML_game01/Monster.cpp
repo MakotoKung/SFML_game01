@@ -4,8 +4,13 @@
 #include <vector>
 using namespace std;
 
+
 void Monster::setID(int id) { id = id; }
 int Monster::getID() { return id; }
+void Monster::set_heighFrame(int heigh) { heighFrame = heigh; }
+int Monster::get_heighFrame() { return heighFrame; }
+void Monster::set_widthFrame(int width) { widthFrame = width; }
+int Monster::get_widthFrame() { return widthFrame; }
 
 void Monster::Random(int start,int end) {
     random_device rd;  // ใช้ entropy จริง (ถ้ามี)
@@ -28,4 +33,9 @@ void Monster::Random(int start,int end) {
 
     
 
+}
+
+void Monster::setRect(int x, int y, int width, int heigh) {
+
+    sprite.setTextureRect(sf::IntRect(x, y, width, heigh));
 }

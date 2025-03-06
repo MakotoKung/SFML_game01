@@ -15,10 +15,11 @@ const int height = 720;
 
 int main()
 {
-    Player player(0.8f, 100.00f, { 5,520 }, sf::IntRect(0, 320, 1220, 250), 3, { 64,128 }); //Contructor = Position in Entity_Class x,y
-    Monster monster[10],Boss;
+    Player player(0.8f, 100.00f, { 5,520 }, sf::IntRect(0, 320, 1220, 250), 3, { 64,128 });
+    Monster Wolf[3];
+    
     Entity Background, barSta, sta, Heart[3];
-
+    //110,130
     //---------FONT------------//
     sf::Font font;
     if (!font.loadFromFile("C:/Windows/Fonts/Arial.ttf")) {
@@ -38,8 +39,6 @@ int main()
     timeText.setStyle(sf::Text::Bold);
     timeText.setFillColor(sf::Color::Black);
     timeText.setPosition(1150, 40);
-
-
 
 
     Background.LoadTexture("Image/Background.png");
@@ -77,29 +76,22 @@ int main()
       2:T-rex
       3:Kamikaze Bird
     */
-    for (int i = 0;i < 10;i++) {
-        monster[i].Random(1, 100);
-        cout << monster[i].getID() << endl;
+    float timeFrame = 0.1f;
+    int totalFrame = 6;
+    int currentFrame = 0;
+    for (int i = 0;i<3;i++) {
+        Wolf[i].setID(1); 
+        Wolf[i].Hp = 3;
+        //Wolf[i].body.setFillColor(sf::Color::Transparent);
+        Wolf[i].set_widthFrame(110);
+        Wolf[i].set_heighFrame(130);
+        Wolf[i].LoadTexture("Image/move.png");
     }
-    for (int i = 0;i < 10;i++) {
-        if (monster[i].getID() ==1 ) {
-            
-            monster[i].Hp = 3;
-            monster[i].body.setFillColor(sf::Color::Transparent);
-            monster[i].body.setSize({ 60,124 });
-            //monster[i].LoadTexture("D:/ALL/Anime/8a7ae09df6771a1e65adbf2c2ff2b743.png");
-        }
-        if (monster[i].getID() == 2) {
-            
-            monster[i].Hp = 10;
-            monster[i].body.setFillColor(sf::Color::Transparent);
-        }
-        if (monster[i].getID() == 3) {
-
-        }
-    }
-
+  
+    //time
     sf::Clock clock;
+    sf::Clock aniClock;
+    
     sf::RenderWindow window(sf::VideoMode(width, height), "First Game");
     window.setFramerateLimit(90);
 
@@ -114,8 +106,9 @@ int main()
                 window.close();
             }
         }
-        //float deltatime = clock.restart().asSeconds();
+        float aniTime = aniClock.getElapsedTime().asSeconds();
         float time = clock.getElapsedTime().asSeconds();
+        
         cout << "time : " << time;
         timeText.setString("Time : " + to_string(static_cast<int>(time)) + " s");
         
@@ -142,13 +135,22 @@ int main()
             }
             player.Render(window);
         }
-        for (int i = 0;i < 10;i++) {
-            monster[i].Render(window);
+        //Use time of aniTime for run animation and annoy time game
+        if (aniTime > timeFrame) {
+            currentFrame = (currentFrame +1)%totalFrame;
+            cout << "Frame :" << currentFrame << endl;
+            Wolf[0].setRect(40+(200*currentFrame), 0, 110, 130); //setRect(x,y,widthFrame,heighFrame);
+            aniClock.restart();
+            
         }
+        
+        
+        Wolf[0].Render(window);
         
         player.setTime(time);
         window.draw(timeText);
         window.draw(scoreText);
+        
         window.display();
         
     }
