@@ -30,6 +30,7 @@ class Player : public Entity {
 		float getTime();
 		void setScore(int);
 		int getScore();
+		bool isCollision(const sf::Sprite& obj1, const sf::Sprite& obj2);
 		
 
 		

@@ -26,6 +26,8 @@ class Entity  {
 		}
 		
 		bool Game_Over();
+		sf::FloatRect GetBounds() const;
+		bool CheckCollision(const Entity& other) const;
 		void Render(sf::RenderWindow& window);
 			
 		

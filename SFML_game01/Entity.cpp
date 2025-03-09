@@ -42,6 +42,14 @@ bool Entity::Game_Over() {
 void Entity::Render(sf::RenderWindow& window) {
 		window.draw(sprite);
 		window.draw(body);
+		
+}
+sf::FloatRect Entity::GetBounds() const {
+	return sprite.getGlobalBounds();
 }
 
+// ??????????????? Entity ????
+bool Entity::CheckCollision(const Entity& other) const {
+	return this->GetBounds().intersects(other.GetBounds());
+}
 

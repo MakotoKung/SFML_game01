@@ -107,6 +107,10 @@ int main()
             if (player.Game_Over() == 0) {
                 window.close();
             }
+            if (player.CheckCollision(Wolf[0])) {
+                std::cout << "Collision Detected!" << std::endl;
+                window.close();
+            }
         }
         float aniTime = aniClock.getElapsedTime().asSeconds();
         float time = clock.getElapsedTime().asSeconds();
@@ -146,8 +150,6 @@ int main()
             aniClock.restart();
             
         }
-        
-        
         
         if (time > 1) {
             
@@ -222,7 +224,7 @@ int main()
     //Complete//    -score & time 
                     -Main menu 
     //Complete//    -Monster Class 
-                    -Hitbox (collision)
+    //Complete//    -Hitbox (collision)
 
 */
 
@@ -246,7 +248,7 @@ int main()
         Next to do list 
                        
         //Complete//     -move monster 
-        //After//        -Collision
+        //Complete//        -Collision
         //-------//      -More Wolf in space;
 
 
